@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Information — Cursed McDonalds</title>
+    <meta name="description" content="Background, updates, and project details for Cursed McDonalds." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="crt">
+    <div class="fx" aria-hidden="true">
+      <div class="fx__scanlines"></div>
+      <div class="fx__vignette"></div>
+      <div class="fx__noise"></div>
+    </div>
+    <a class="skip" href="#top">Skip to main content</a>
+    <div class="scrim" data-js="scrim" hidden></div>
+
+    <aside class="sidebar" data-js="sidebar" aria-label="Site navigation" aria-hidden="true">
+      <div class="sidebar__top">
+        <div class="sidebar__brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <button class="iconbtn" type="button" aria-label="Close sidebar" data-js="sidebarClose">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+
+      <div class="sidebar__search">
+        <input class="search" type="search" placeholder="Search this site" aria-label="Search this site" data-js="search" />
+      </div>
+
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="index.html#top">Home</a>
+        <a class="sidebar__link" href="lore.html">Lore</a>
+        <a class="sidebar__link sidebar__sublink" href="diary-1.html">Diary 1</a>
+        <a class="sidebar__link sidebar__link--hot" href="information.html">Information</a>
+        <a class="sidebar__link" href="report.html">Report</a>
+        <a class="sidebar__link" href="play.html">Play</a>
+        <a class="sidebar__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">GitHub Site</a>
+      </nav>
+    </aside>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <nav class="nav">
+          <button class="iconbtn" type="button" aria-label="Open sidebar" data-js="sidebarOpen">
+            <span class="iconbtn__bars" aria-hidden="true"></span>
+          </button>
+          <a class="nav__link" href="play.html">Play</a>
+          <a class="nav__link" href="information.html">Information</a>
+          <a class="nav__link" href="report.html">Report</a>
+          <a class="nav__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">GitHub Site</a>
+          <span class="nav__link user-display">Logged in as: <span data-user-display></span></span>
+          <button class="nav__link nav__link--logout" type="button" data-logout-btn>Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="top" role="main">
+      <section class="card" aria-labelledby="page-title">
+        <div class="card__header">
+          <div class="card__title">
+            <h1 id="page-title" class="glitch" data-glitch="Information">Information</h1>
+            <div class="badges">
+              <span class="badge">guide</span>
+              <span class="badge badge--hot">updates</span>
+            </div>
+          </div>
+          <p class="muted">Warning: strong visual effects may impact older devices.</p>
+        </div>
+
+        <p>
+          Cursed McDonald's was originally a paper game that was created for common use. It was never expected that this game would be a superhit. It had gained large popularity in 2025, where many players played the game. It was a big hit. But the creator wanted more. After some time, he decided to make the game online, and published the game on GitHub. But that still wasn't enough. So he eventually created this website, that is free to use, and has full support for all devices.
+        </p>
+        <p>
+          Many people were disappointed with the original online game, because it had many bugs and glitches, and the UI was very bad. Nobody liked the original version, because of the poor features. After a long time, players had got what they wanted: A new remastered version of Cursed McDonalds. This was very good, and many more people followed the franchise of Cursed McDonalds.
+        </p>
+        <p>
+          The Cursed McDonalds team is expanding, and will gain more people to work on it. We are ready to hire anyone who wants the job. This is the job that many people dream about. For this reason, the requirements are very high. Not everyone can become a Cursed McDonalds worker.
+        </p>
+        <p>
+          Cursed McDonalds will also get a menu, so that you can understand more about the Cursed McDonalds franchise.
+        </p>
+        <p>
+          Many more updates are coming, so you will see them in the future. If there are any bugs, you can report them on the report page.
+        </p>
+
+        <figure class="media">
+          <img
+            class="media__img"
+            src="assets/images/hero-placeholder.svg"
+            alt="Cursed McDonalds information page featuring retro 80s styled graphics and visual effects"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+          <figcaption class="media__caption">Cursed McDonalds experience visualization</figcaption>
+        </figure>
+
+        <div class="card__footer">
+          <a class="button button--ghost" href="play.html">Play</a>
+          <a class="button button--ghost" href="report.html">Report</a>
+          <a class="button button--ghost" href="index.html#top">Back to Home</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <small class="muted">© 2025 Cursed McDonalds. All rights reserved. | <a href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">Source Code</a></small>
+          <div class="music-player" data-js="musicPlayer">
+            <audio id="bgMusic" preload="metadata" loop>
+              <source src="assets/audio/bg music.mp3" type="audio/mpeg">
+            </audio>
+            <button class="music-btn" type="button" aria-label="Toggle music" data-js="musicToggle" title="Toggle background music">
+              <span class="music-icon" aria-hidden="true">♪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+

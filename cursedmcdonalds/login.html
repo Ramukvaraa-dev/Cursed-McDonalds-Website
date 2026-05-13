@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Cursed McDonalds</title>
+    <meta name="description" content="Login to Cursed McDonalds" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Microsoft OAuth -->
+    <script src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.min.js"></script>
+    <style>
+      .auth-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .auth-wrapper {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .auth-card {
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+      }
+
+      .auth-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .auth-header h1 {
+        margin: 0;
+        font-size: 1.75rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+      }
+
+      .auth-header p {
+        margin: 0.5rem 0 0;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
+      .auth-form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .auth-form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .auth-form-group input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        color: var(--text);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 200ms ease;
+      }
+
+      .auth-form-group input:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 12px rgba(255, 204, 0, 0.2);
+      }
+
+      .auth-form-group input::placeholder {
+        color: var(--muted);
+      }
+
+      .auth-error {
+        padding: 0.75rem 1rem;
+        background: rgba(255, 61, 107, 0.1);
+        border: 1px solid rgba(255, 61, 107, 0.3);
+        border-radius: 0.5rem;
+        color: #ff9ab9;
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        display: none;
+      }
+
+      .auth-error.show {
+        display: block;
+      }
+
+      .auth-success {
+        padding: 0.75rem 1rem;
+        background: rgba(0, 255, 204, 0.1);
+        border: 1px solid rgba(0, 255, 204, 0.3);
+        border-radius: 0.5rem;
+        color: #00ffcc;
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        display: none;
+      }
+
+      .auth-success.show {
+        display: block;
+      }
+
+      .auth-btn {
+        width: 100%;
+        padding: 0.875rem;
+        background: var(--accent);
+        border: none;
+        border-radius: 0.5rem;
+        color: #000;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 200ms ease;
+        box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+      }
+
+      .auth-btn:hover:not(:disabled) {
+        background: #ffdc33;
+        box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .auth-btn:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      .auth-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .auth-toggle {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
+      .auth-toggle a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 200ms ease;
+      }
+
+      .auth-toggle a:hover {
+        color: #ffdc33;
+      }
+
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .password-requirements {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+
+      .password-requirements li {
+        margin: 0.25rem 0;
+      }
+
+      @media (max-width: 640px) {
+        .auth-card {
+          padding: 1.5rem;
+        }
+
+        .auth-header h1 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .oauth-section {
+        margin: 1.5rem 0;
+      }
+
+      .oauth-divider {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem 0;
+        gap: 1rem;
+      }
+
+      .oauth-divider::before,
+      .oauth-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .oauth-divider span {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .oauth-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .oauth-btn {
+        flex: 1;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 200ms ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .oauth-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .oauth-btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.12);
+      }
+
+      .oauth-btn.google {
+        color: #1f2937;
+      }
+
+      .oauth-btn.google svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .oauth-btn.microsoft {
+        color: #00a4ef;
+      }
+
+      .oauth-btn.microsoft svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      #googleSignInButton {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="crt">
+    <div class="fx" aria-hidden="true">
+      <div class="fx__scanlines"></div>
+      <div class="fx__vignette"></div>
+      <div class="fx__noise"></div>
+    </div>
+
+    <div class="auth-container">
+      <div class="auth-wrapper">
+        <div class="auth-card">
+          <!-- Login Form -->
+          <form id="loginForm" class="auth-form active" data-js="loginForm">
+            <div class="auth-header">
+              <h1>Login</h1>
+              <p>Enter the Cursed Realm</p>
+            </div>
+
+            <div class="auth-error" data-js="loginError"></div>
+            <div class="auth-success" data-js="loginSuccess"></div>
+
+            <div class="auth-form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="email" placeholder="your@email.com" required />
+            </div>
+
+            <div class="auth-form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" name="password" placeholder="••••••••" required />
+            </div>
+
+            <button type="submit" class="auth-btn">Login</button>
+
+            <div class="oauth-divider">
+              <span>Or continue with</span>
+            </div>
+
+            <div class="oauth-buttons">
+              <div id="googleSignInButton"></div>
+              <button type="button" class="oauth-btn microsoft" id="microsoftSignInBtn">
+                <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="9" height="9" fill="currentColor"/>
+                  <rect x="13" y="1" width="9" height="9" fill="currentColor"/>
+                  <rect x="1" y="13" width="9" height="9" fill="currentColor"/>
+                  <rect x="13" y="13" width="9" height="9" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="auth-toggle">
+              No account? <a href="#" data-js="switchToSignup">Sign up</a>
+            </div>
+          </form>
+
+          <!-- Sign Up Form -->
+          <form id="signupForm" class="auth-form" data-js="signupForm">
+            <div class="auth-header">
+              <h1>Sign Up</h1>
+              <p>Join the Cursed</p>
+            </div>
+
+            <div class="auth-error" data-js="signupError"></div>
+            <div class="auth-success" data-js="signupSuccess"></div>
+
+            <div class="auth-form-group">
+              <label for="signupUsername">Username</label>
+              <input type="text" id="signupUsername" name="username" placeholder="Your username" minlength="3" required />
+            </div>
+
+            <div class="auth-form-group">
+              <label for="signupEmail">Email</label>
+              <input type="email" id="signupEmail" name="email" placeholder="your@email.com" required />
+            </div>
+
+            <div class="auth-form-group">
+              <label for="signupPassword">Password</label>
+              <input
+                type="password"
+                id="signupPassword"
+                name="password"
+                placeholder="••••••••"
+                minlength="6"
+                required
+              />
+              <div class="password-requirements">
+                <li>At least 6 characters</li>
+              </div>
+            </div>
+
+            <button type="submit" class="auth-btn">Create Account</button>
+
+            <div class="auth-toggle">
+              Already have an account? <a href="#" data-js="switchToLogin">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+      /**
+       * Authentication UI Controller
+       */
+      const authUI = (() => {
+        const loginForm = document.querySelector('[data-js="loginForm"]');
+        const signupForm = document.querySelector('[data-js="signupForm"]');
+        const switchToSignup = document.querySelector('[data-js="switchToSignup"]');
+        const switchToLogin = document.querySelector('[data-js="switchToLogin"]');
+        const loginError = document.querySelector('[data-js="loginError"]');
+        const loginSuccess = document.querySelector('[data-js="loginSuccess"]');
+        const signupError = document.querySelector('[data-js="signupError"]');
+        const signupSuccess = document.querySelector('[data-js="signupSuccess"]');
+
+        const showMessage = (element, message, duration = 5000) => {
+          if (element) {
+            element.textContent = message;
+            element.classList.add("show");
+            setTimeout(() => {
+              element.classList.remove("show");
+            }, duration);
+          }
+        };
+
+        const clearMessages = () => {
+          [loginError, loginSuccess, signupError, signupSuccess].forEach((el) => {
+            if (el) el.classList.remove("show");
+          });
+        };
+
+        const switchForm = (toSignup) => {
+          clearMessages();
+          if (toSignup) {
+            loginForm.classList.remove("active");
+            signupForm.classList.add("active");
+          } else {
+            signupForm.classList.remove("active");
+            loginForm.classList.add("active");
+          }
+          // Reset forms
+          loginForm.reset();
+          signupForm.reset();
+        };
+
+        // Event listeners for form switching
+        switchToSignup?.addEventListener("click", (e) => {
+          e.preventDefault();
+          switchForm(true);
+        });
+
+        switchToLogin?.addEventListener("click", (e) => {
+          e.preventDefault();
+          switchForm(false);
+        });
+
+        // Login form submission
+        loginForm?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.querySelector("#loginEmail").value;
+          const password = document.querySelector("#loginPassword").value;
+
+          const result = Auth.login(email, password);
+          if (result.success) {
+            showMessage(loginSuccess, result.message, 1500);
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1500);
+          } else {
+            showMessage(loginError, result.message);
+          }
+        });
+
+        // Sign up form submission
+        signupForm?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const username = document.querySelector("#signupUsername").value;
+          const email = document.querySelector("#signupEmail").value;
+          const password = document.querySelector("#signupPassword").value;
+
+          const result = Auth.signup(username, email, password);
+          if (result.success) {
+            showMessage(signupSuccess, result.message, 1500);
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1500);
+          } else {
+            showMessage(signupError, result.message);
+          }
+        });
+
+        return {
+          switchForm,
+          showMessage,
+        };
+      })();
+
+      // Prevent Auth.init() from redirecting on login page
+      const Auth_original_init = Auth.init;
+      Auth.init = () => {
+        // Skip redirect on login page
+        if (!window.location.pathname.includes("login.html")) {
+          Auth_original_init();
+        }
+      };
+
+      /**
+       * Google Sign-In Handler
+       */
+      window.onload = function () {
+        // Google Sign-In
+        if (typeof google !== 'undefined' && google.accounts) {
+          google.accounts.id.initialize({
+            client_id: '21684531745-sepsoe4hsn95jsb2uaeppjfotq011fq4.apps.googleusercontent.com', // Replace with your Google Client ID
+            callback: handleGoogleSignIn
+          });
+
+          google.accounts.id.renderButton(
+            document.getElementById('googleSignInButton'),
+            {
+              theme: 'dark',
+              size: 'large',
+              width: '100%'
+            }
+          );
+        }
+      };
+
+      /**
+       * Handle Google Sign-In Response
+       */
+      async function handleGoogleSignIn(response) {
+        try {
+          // Decode JWT from Google
+          const base64Url = response.credential.split('.')[1];
+          const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+          const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+
+          const googleData = JSON.parse(jsonPayload);
+
+          // Send to server or use local auth
+          const result = await Auth.loginWithGoogle(googleData);
+
+          if (result.success) {
+            showMessage(loginSuccess, 'Google login successful!', 1500);
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 1500);
+          } else {
+            showMessage(loginError, result.message);
+          }
+        } catch (error) {
+          console.error('Google sign-in error:', error);
+          showMessage(loginError, 'Google login failed');
+        }
+      }
+
+      /**
+       * Microsoft Sign-In Handler
+       */
+      document.getElementById('microsoftSignInBtn')?.addEventListener('click', handleMicrosoftSignIn);
+
+      async function handleMicrosoftSignIn(e) {
+        e.preventDefault();
+        showMessage(loginError, 'Microsoft OAuth: Please configure MSAL with your Azure credentials (see SETUP_GUIDE.md)');
+      }
+    </script>
+  </body>
+</html>

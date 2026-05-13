@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lore</title>
+    <meta name="description" content="Read the story behind Cursed McDonalds and the first diary entry." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="crt">
+    <div class="fx" aria-hidden="true">
+      <div class="fx__scanlines"></div>
+      <div class="fx__vignette"></div>
+      <div class="fx__noise"></div>
+    </div>
+    <a class="skip" href="#top">Skip to main content</a>
+    <div class="scrim" data-js="scrim" hidden></div>
+
+    <aside class="sidebar" data-js="sidebar" aria-label="Site navigation" aria-hidden="true">
+      <div class="sidebar__top">
+        <div class="sidebar__brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <button class="iconbtn" type="button" aria-label="Close sidebar" data-js="sidebarClose">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+
+      <div class="sidebar__search">
+        <input class="search" type="search" placeholder="Search this site" aria-label="Search this site" data-js="search" />
+      </div>
+
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="index.html#top">Home</a>
+        <a class="sidebar__link sidebar__link--hot" href="lore.html">Lore</a>
+        <a class="sidebar__link sidebar__sublink" href="diary-1.html">Diary 1</a>
+        <a class="sidebar__link" href="information.html">Information</a>
+        <a class="sidebar__link" href="report.html">Report</a>
+        <a class="sidebar__link" href="play.html">Play</a>
+        <a class="sidebar__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">GitHub Site</a>
+      </nav>
+    </aside>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <nav class="nav">
+          <button class="iconbtn" type="button" aria-label="Open sidebar" data-js="sidebarOpen">
+            <span class="iconbtn__bars" aria-hidden="true"></span>
+          </button>
+          <a class="nav__link" href="play.html">Play</a>
+          <a class="nav__link" href="lore.html">Lore</a>
+          <a class="nav__link" href="information.html">Information</a>
+          <a class="nav__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">GitHub Site</a>
+          <span class="nav__link user-display">Logged in as: <span data-user-display></span></span>
+          <button class="nav__link nav__link--logout" type="button" data-logout-btn>Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="top" role="main">
+      <section class="card" aria-labelledby="lore-title">
+        <div class="card__header">
+          <div class="card__title">
+            <h1 id="lore-title" class="glitch" data-glitch="Lore">Lore</h1>
+            <div class="badges">
+              <span class="badge">story</span>
+              <span class="badge badge--hot">archive</span>
+            </div>
+          </div>
+          <p class="muted">Quote from a guard of Cursed McDonalds.</p>
+        </div>
+
+        <p>
+          This is the lore of Cursed McDonalds, made by official worker of Cursed McDonalds, until they were tortured to death. Your safety at this page is not guaranteed. Many people have visited this page and are not known to ever come back. If you wish to see this page, you must agree to accept all the risk that comes by reading this. That is all I have to say. Goodbye
+        </p>
+        <p class="muted">- A nameless guard of Cursed McDonald's</p>
+        <p>Read the lore of Cursed McDonalds in the following diaries. But beware... they are always watching.</p>
+
+        <figure class="media">
+          <img
+            class="media__img"
+            src="assets/images/hero-placeholder.svg"
+            alt="Lore artwork"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+        </figure>
+
+        <div class="card__footer">
+          <a class="button button--ghost" href="diary-1.html">Read Diary 1</a>
+          <a class="button button--ghost" href="information.html">Information</a>
+          <a class="button button--ghost" href="index.html#top">Back to Home</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <small class="muted">© 2025 Cursed McDonalds. All rights reserved. | <a href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">Source Code</a></small>
+          <div class="music-player" data-js="musicPlayer">
+            <audio id="bgMusic" preload="metadata" loop>
+              <source src="assets/audio/bg music.mp3" type="audio/mpeg">
+            </audio>
+            <button class="music-btn" type="button" aria-label="Toggle music" data-js="musicToggle" title="Toggle background music">
+              <span class="music-icon" aria-hidden="true">♪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2a0f17" />
+      <stop offset="0.55" stop-color="#0a0a12" />
+      <stop offset="1" stop-color="#0a1b17" />
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffcc00" stop-opacity="0.32" />
+      <stop offset="0.55" stop-color="#ff3d6b" stop-opacity="0.14" />
+      <stop offset="1" stop-color="#000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.18 0" />
+    </filter>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="18" />
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#bg)" />
+  <rect width="1400" height="900" fill="url(#glow)" />
+  <rect width="1400" height="900" filter="url(#noise)" opacity="0.55" />
+
+  <g opacity="0.75">
+    <path d="M-20 160 C 240 90, 420 120, 700 70 S 1180 60, 1420 120" fill="none" stroke="#ffcc00" stroke-width="5" opacity="0.26" />
+    <path d="M-20 780 C 260 720, 520 810, 730 770 S 1160 700, 1420 760" fill="none" stroke="#00dcff" stroke-width="4" opacity="0.22" />
+  </g>
+
+  <g transform="translate(90 130)">
+    <rect x="0" y="0" width="1220" height="640" rx="28" fill="#000" opacity="0.28" />
+    <rect x="0" y="0" width="1220" height="640" rx="28" fill="none" stroke="#ffffff" opacity="0.12" />
+    <g transform="translate(52 70)">
+      <text x="0" y="0" fill="#ffffff" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" opacity="0.95">
+        Cursed McDonald&#39;s
+      </text>
+      <text x="0" y="56" fill="#ffffff" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="24" opacity="0.78">
+        Enter the shift. Survive the night.
+      </text>
+    </g>
+
+    <g opacity="0.18" filter="url(#soft)">
+      <rect x="80" y="260" width="520" height="14" rx="10" fill="#ff3d6b" />
+      <rect x="80" y="320" width="820" height="14" rx="10" fill="#ffcc00" />
+      <rect x="80" y="380" width="640" height="14" rx="10" fill="#00dcff" />
+      <rect x="80" y="440" width="900" height="14" rx="10" fill="#7c3cff" />
+    </g>
+  </g>
+</svg>
+

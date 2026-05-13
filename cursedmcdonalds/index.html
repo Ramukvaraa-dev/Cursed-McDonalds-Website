@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursed McDonalds</title>
+    <meta name="description" content="Official Cursed McDonalds franchise hub with game, lore, updates, and reporting." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="crt">
+    <div class="fx" aria-hidden="true">
+      <div class="fx__scanlines"></div>
+      <div class="fx__vignette"></div>
+      <div class="fx__noise"></div>
+    </div>
+    <a class="skip" href="#top">Skip to main content</a>
+    <div class="scrim" data-js="scrim" hidden></div>
+
+    <aside class="sidebar" data-js="sidebar" aria-label="Site navigation" aria-hidden="true">
+      <div class="sidebar__top">
+        <div class="sidebar__brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <button class="iconbtn" type="button" aria-label="Close sidebar" data-js="sidebarClose">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+
+      <div class="sidebar__search">
+        <input class="search" type="search" placeholder="Search this site" aria-label="Search this site" data-js="search" />
+      </div>
+
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="#top">Home</a>
+        <a class="sidebar__link" href="lore.html">Lore</a>
+        <a class="sidebar__link sidebar__sublink" href="diary-1.html">Diary 1</a>
+        <a class="sidebar__link" href="information.html">Information</a>
+        <a class="sidebar__link" href="report.html">Report</a>
+        <a class="sidebar__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer"
+          >GitHub Site</a
+        >
+        <a class="sidebar__link sidebar__link--hot" href="play.html">Play</a>
+      </nav>
+    </aside>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" /></span>
+          <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
+        </div>
+        <nav class="nav">
+          <button class="iconbtn" type="button" aria-label="Open sidebar" data-js="sidebarOpen">
+            <span class="iconbtn__bars" aria-hidden="true"></span>
+          </button>
+          <a class="nav__link" href="play.html">Play</a>
+          <a class="nav__link" href="information.html">Information</a>
+          <a class="nav__link" href="report.html">Report</a>
+          <a class="nav__link" href="lore.html">Lore</a>
+          <a class="nav__link" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">GitHub Site</a>
+          <span class="nav__link user-display">Logged in as: <span data-user-display></span></span>
+          <button class="nav__link nav__link--logout" type="button" data-logout-btn>Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="top" role="main">
+      <section class="hero" id="hero-section" aria-labelledby="hero-title">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="kicker">Welcome to the Cursed McDonalds Official Website</p>
+            <h1 id="hero-title" class="glitch hero__title" data-glitch="Cursed McDonalds Hub">Cursed McDonalds Hub</h1>
+            <p class="muted">The official Cursed McDonalds web platform built with clean HTML, CSS, and JavaScript.</p>
+            <p>This website serves as the central hub for all things Cursed McDonalds—from lore and diaries to gameplay and community reports. Explore each section to uncover the mysteries of this cursed franchise.</p>
+            <p>Use the sidebar or quick links below to open each section on its own page.</p>
+            <p class="muted">Note: the experience intentionally includes visual glitch effects.</p>
+            <div class="hero__actions">
+              <a class="button" href="play.html">Play Now</a>
+              <a class="button button--ghost" href="lore.html">Read Lore</a>
+            </div>
+            <div class="callout">
+              <div class="callout__title">Official Resources</div>
+              <div class="callout__links">
+                <a href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds">GitHub Repo</a>
+                <span aria-hidden="true">|</span>
+                <a href="https://cursed-mcdonalds.onrender.com/">Live Game</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero__panel" role="note" aria-label="Quick tips">
+            <div class="panel">
+              <div class="panel__title">Quick tips</div>
+              <ul class="panel__list">
+                <li>Hit <span class="chip">Fullscreen</span> before playing.</li>
+                <li>Want it offline? Drop files into <span class="chip">assets/</span> and swap URLs.</li>
+                <li>Put the game in <span class="chip">assets/game/</span></li>
+              </ul>
+            </div>
+            <div class="hero__image" aria-hidden="true">
+              <img class="hero__img" src="assets/images/hero-placeholder.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="sections" aria-labelledby="explore-title">
+        <div class="card__header">
+          <div class="card__title">
+            <h2 id="explore-title" class="glitch" data-glitch="Explore Pages">Explore Pages</h2>
+            <div class="badges">
+              <span class="badge">hub</span>
+              <span class="badge badge--hot">navigation</span>
+            </div>
+          </div>
+          <p class="muted">Each section now lives on its own dedicated page.</p>
+        </div>
+        <div class="grid">
+          <a class="tile" href="play.html">
+            <div class="tile__title">Play</div>
+            <div class="tile__body muted">Launch the game and use fullscreen/glitch controls.</div>
+          </a>
+          <a class="tile" href="lore.html">
+            <div class="tile__title">Lore</div>
+            <div class="tile__body muted">Read the main lore archive and narrative context.</div>
+          </a>
+          <a class="tile" href="diary-1.html">
+            <div class="tile__title">Diary 1</div>
+            <div class="tile__body muted">View the first recovered night-shift entry.</div>
+          </a>
+          <a class="tile" href="information.html">
+            <div class="tile__title">Information</div>
+            <div class="tile__body muted">See project background, updates, and plans.</div>
+          </a>
+          <a class="tile" href="report.html">
+            <div class="tile__title">Report</div>
+            <div class="tile__body muted">Submit bugs, issues, and feedback.</div>
+          </a>
+          <a class="tile tile--soft" href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">
+            <div class="tile__title">GitHub</div>
+            <div class="tile__body muted">Download builds and track source updates.</div>
+          </a>
+        </div>
+        <div class="card__footer">
+          <a class="button button--ghost" href="play.html">Play</a>
+          <a class="button button--ghost" href="report.html">Report</a>
+          <a class="button button--ghost" href="#top">Back to top</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__header">
+          <div class="card__title">
+            <h2 class="glitch" data-glitch="Extra Updates">Extra Updates</h2>
+            <div class="badges">
+              <span class="badge">soon</span>
+              <span class="badge">wip</span>
+            </div>
+          </div>
+        </div>
+        <p><span class="muted">Extra updates:</span> Coming soon.</p>
+        <div class="card__footer">
+          <a class="button button--ghost" href="information.html">Information</a>
+          <a class="button button--ghost" href="report.html">Report</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <small class="muted">© 2025 Cursed McDonalds. All rights reserved. | <a href="https://github.com/Ramukvaraa-dev/Cursed-McDonalds" target="_blank" rel="noreferrer">Source Code</a></small>
+          <div class="music-player" data-js="musicPlayer">
+            <audio id="bgMusic" preload="metadata" loop>
+              <source src="assets/audio/bg music.mp3" type="audio/mpeg">
+            </audio>
+            <button class="music-btn" type="button" aria-label="Toggle music" data-js="musicToggle" title="Toggle background music">
+              <span class="music-icon" aria-hidden="true">♪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
