@@ -277,6 +277,36 @@
       #googleSignInButton {
         width: 100%;
       }
+
+      .auth-skip {
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .skip-btn {
+        width: 100%;
+        padding: 0.875rem;
+        background: rgba(255, 204, 0, 0.1);
+        border: 1px solid rgba(255, 204, 0, 0.3);
+        border-radius: 0.5rem;
+        color: var(--accent);
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 200ms ease;
+      }
+
+      .skip-btn:hover {
+        background: rgba(255, 204, 0, 0.2);
+        border-color: rgba(255, 204, 0, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .skip-btn:active {
+        transform: translateY(0);
+      }
     </style>
   </head>
   <body class="crt">
@@ -330,6 +360,10 @@
             <div class="auth-toggle">
               No account? <a href="#" data-js="switchToSignup">Sign up</a>
             </div>
+
+            <div class="auth-skip">
+              <button type="button" class="skip-btn" data-js="skipLogin">Skip</button>
+            </div>
           </form>
 
           <!-- Sign Up Form -->
@@ -372,6 +406,10 @@
             <div class="auth-toggle">
               Already have an account? <a href="#" data-js="switchToLogin">Login</a>
             </div>
+
+            <div class="auth-skip">
+              <button type="button" class="skip-btn" data-js="skipSignup">Skip</button>
+            </div>
           </form>
         </div>
       </div>
@@ -387,6 +425,8 @@
         const signupForm = document.querySelector('[data-js="signupForm"]');
         const switchToSignup = document.querySelector('[data-js="switchToSignup"]');
         const switchToLogin = document.querySelector('[data-js="switchToLogin"]');
+        const skipLogin = document.querySelector('[data-js="skipLogin"]');
+        const skipSignup = document.querySelector('[data-js="skipSignup"]');
         const loginError = document.querySelector('[data-js="loginError"]');
         const loginSuccess = document.querySelector('[data-js="loginSuccess"]');
         const signupError = document.querySelector('[data-js="signupError"]');
@@ -431,6 +471,17 @@
         switchToLogin?.addEventListener("click", (e) => {
           e.preventDefault();
           switchForm(false);
+        });
+
+        // Skip login/signup
+        skipLogin?.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.location.href = "index.html";
+        });
+
+        skipSignup?.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.location.href = "index.html";
         });
 
         // Login form submission
