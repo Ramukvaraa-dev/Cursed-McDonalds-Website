@@ -17,16 +17,8 @@ const Auth = (() => {
    * Initialize auth on page load
    */
   const init = () => {
-    // Check if user is logged in
-    if (!isLoggedIn()) {
-      // Redirect to login if not on login page
-      if (!window.location.pathname.includes("login.html")) {
-        window.location.href = "login.html";
-      }
-    } else {
-      // Show logged in status
-      updateUIWithUser();
-    }
+    // Update UI based on login status (shows login button if not logged in)
+    updateUIWithUser();
   };
 
   /**
@@ -189,7 +181,8 @@ const Auth = (() => {
   const logout = () => {
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(SESSION_KEY);
-    window.location.href = "login.html";
+    // Reload page to update UI instead of redirecting to login
+    window.location.reload();
   };
 
   /**
@@ -209,17 +202,41 @@ const Auth = (() => {
    */
   const updateUIWithUser = () => {
     const user = getUser();
+    const userDisplay = document.querySelector(".user-display");
+    const logoutBtn = document.querySelector("[data-logout-btn]");
+    
     if (user) {
+      // Show user display and logout button
+      if (userDisplay) userDisplay.style.display = "";
+      if (logoutBtn) logoutBtn.style.display = "";
+      
       // Update any user display elements
       const userElements = document.querySelectorAll("[data-user-display]");
       userElements.forEach((el) => {
         el.textContent = user.username;
       });
 
-      // Update logout button
-      const logoutBtn = document.querySelector("[data-logout-btn]");
+      // Add logout button listener
       if (logoutBtn) {
         logoutBtn.addEventListener("click", logout);
+      }
+    } else {
+      // Hide user display and logout button when not logged in
+      if (userDisplay) userDisplay.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      
+      // Show login link instead
+      let loginLink = document.querySelector("[data-login-btn]");
+      if (!loginLink) {
+        const nav = document.querySelector(".nav");
+        if (nav) {
+          loginLink = document.createElement("a");
+          loginLink.className = "nav__link";
+          loginLink.href = "login.html";
+          loginLink.textContent = "Sign In";
+          loginLink.setAttribute("data-login-btn", "");
+          nav.appendChild(loginLink);
+        }
       }
     }
   };
