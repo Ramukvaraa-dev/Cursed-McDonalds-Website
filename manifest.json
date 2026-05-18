@@ -1,0 +1,22 @@
+{
+  "name": "Cursed McDonalds",
+  "short_name": "CursedMcD",
+  "description": "A cursed fan-made McDonalds horror website.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff0000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/images/Cursed McDonalds Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/Cursed McDonalds Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
