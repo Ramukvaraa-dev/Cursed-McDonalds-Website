@@ -45,6 +45,30 @@ if (isGlitchPage) {
 }
 
 // ====================
+// VISITOR COUNTER
+// ====================
+(function initVisitorCounter() {
+  const visitorCountEl = document.getElementById("visitor-count");
+  if (!visitorCountEl) return;
+
+  // Only count unique visits (once per session via localStorage)
+  if (!localStorage.getItem("visited")) {
+    fetch("https://api.countapi.xyz/hit/cursedmcdonalds/visits");
+    localStorage.setItem("visited", "true");
+  }
+
+  // Fetch and display current count
+  fetch("https://api.countapi.xyz/get/cursedmcdonalds/visits")
+    .then(response => response.json())
+    .then(data => {
+      visitorCountEl.textContent = data.value.toLocaleString();
+    })
+    .catch(() => {
+      visitorCountEl.textContent = "Error";
+    });
+})();
+
+// ====================
 // HELPERS
 // ====================
 const debounce = (fn, delay = 300) => {
