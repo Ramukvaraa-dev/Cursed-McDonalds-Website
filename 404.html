@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Lost in Cursed McDonalds</title>
+
+  <style>
+    body {
+      background: black;
+      color: red;
+      font-family: "Courier New", monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      animation: flicker 2s infinite alternate;
+    }
+
+    h1 {
+      font-size: 5rem;
+      text-shadow: 0 0 10px red, 0 0 20px darkred;
+      animation: glitch 0.25s infinite;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 8px 0;
+      opacity: 0.9;
+    }
+
+    a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-shadow: 0 0 10px red, 0 0 20px yellow;
+    }
+
+    .countdown {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ff5555;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      2% { opacity: 0.7; }
+      4% { opacity: 1; }
+      8% { opacity: 0.6; }
+      10% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .scanline {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        rgba(255, 0, 0, 0.03) 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <div class="container">
+    <h1>ERROR 404</h1>
+    <p id="message">You entered a part of the restaurant that does not exist.</p>
+    <p>Turn back before they find you.</p>
+    <br>
+    <a href="index.html">Return to Safety</a>
+    <div class="countdown">
+      Redirecting in <span id="timer">6</span>...
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "You entered a part of the restaurant that does not exist.",
+      "This hallway was sealed years ago.",
+      "They know you are here.",
+      "Access denied. Exit immediately."
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % messages.length;
+      document.getElementById("message").textContent = messages[i];
+    }, 2500);
+
+    let timeLeft = 6;
+    const timer = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timer.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        window.location.href = "index.html";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
