@@ -3,7 +3,10 @@ const chatBox = document.getElementById("chat-box");
 function addMessage(sender, text, className) {
   const msg = document.createElement("div");
   msg.classList.add("message", className);
-  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  const label = document.createElement("strong");
+  label.textContent = `${sender}: `;
+  msg.appendChild(label);
+  msg.appendChild(document.createTextNode(String(text)));
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
   return msg;
@@ -22,6 +25,14 @@ async function sendMessage() {
   sendBtn.disabled = true;
 
   // Show loading indicator
+  if (window.location.protocol === "file:") {
+    addMessage(
+      "System",
+      "Tip: open this site via http:// (not file://) so browsers don’t block requests/caching. If you’re testing locally, run a local server.",
+      "bot"
+    );
+  }
+
   const loadingMsg = addMessage("AI", "⏳ Connecting to cursed systems...", "bot loading");
 
   // Timeout after 65 seconds (Render cold start can take ~60s)
