@@ -1182,3 +1182,199 @@ iframe {
 body {
   overflow-x: hidden;
 }
+
+/* Main Content Sections */
+main section {
+  margin: 3rem 0;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(8px);
+}
+
+.hero-section {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 61, 107, 0.1));
+  border: 2px solid #ff0000;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #ff0000;
+  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 1rem 0;
+  color: var(--text);
+}
+
+/* Game Section */
+.game-section {
+  background: linear-gradient(135deg, rgba(124, 60, 255, 0.1), rgba(255, 61, 107, 0.1));
+  border: 1px solid var(--accent3);
+}
+
+.game-section h2 {
+  font-size: 2rem;
+  color: var(--accent3);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(124, 60, 255, 0.3);
+}
+
+.game-section p {
+  color: var(--muted);
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.game-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent3), #ff3d6b);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--accent3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 60, 255, 0.4);
+  background: linear-gradient(135deg, #9333ff, #ff1d4b);
+}
+
+/* FAQ Section */
+.faq-section {
+  background: var(--card);
+}
+
+.faq-section h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+/* FAQ Toggle */
+.faq-toggle {
+  display: none;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--glass2);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background: var(--card2);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-left: 3px solid var(--accent);
+  padding-left: calc(1.2rem - 3px);
+}
+
+.faq-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+}
+
+.faq-toggle:checked + .faq-question .faq-arrow {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  background: var(--glass);
+}
+
+.faq-toggle:checked + .faq-question + .faq-answer {
+  max-height: 300px;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Updates Section */
+.updates-section {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.1), rgba(124, 60, 255, 0.1));
+  border: 1px solid var(--accent);
+}
+
+.updates-section p {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin: 0;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main section {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .game-section h2,
+  .faq-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .game-links {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .faq-question {
+    padding: 1rem;
+  }
+
+  .faq-toggle:checked + .faq-question + .faq-answer {
+    max-height: 400px;
+  }
+}
