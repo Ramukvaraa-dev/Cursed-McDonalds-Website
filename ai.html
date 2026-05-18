@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cursed McDonalds AI</title>
+  <link rel="stylesheet" href="ai.css" />
+</head>
+<body>
+
+  <div class="chat-container">
+    <h1>Cursed McDonalds AI</h1>
+
+    <div id="chat-box"></div>
+
+    <div class="input-area">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Ask the cursed AI..."
+        onkeypress="handleKey(event)"
+      />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="ai.js"></script>
+</body>
+</html>
