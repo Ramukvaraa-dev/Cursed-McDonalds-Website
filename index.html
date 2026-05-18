@@ -9,10 +9,10 @@
       content="Official Cursed McDonalds franchise hub with game, lore, updates, and reporting."
     />
 
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ff0000" />
-    <link rel="icon" type="image/png" href="assets/images/Cursed McDonalds Logo.png" />
-    <link rel="apple-touch-icon" href="assets/images/Cursed McDonalds Logo.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/cursed-mcdonalds-logo.png" />
+    <link rel="apple-touch-icon" href="assets/images/cursed-mcdonalds-logo.png" />
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -29,7 +29,7 @@
       <div class="sidebar__top">
         <div class="sidebar__brand">
           <span class="brand__mark" aria-hidden="true">
-            <img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" />
+            <img class="brand__logo" src="assets/images/cursed-mcdonalds-logo.png" alt="" />
           </span>
           <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
         </div>
@@ -57,7 +57,7 @@
       <div class="container">
         <div class="brand">
           <span class="brand__mark" aria-hidden="true">
-            <img class="brand__logo" src="assets/images/Cursed McDonalds Logo.png" alt="" />
+            <img class="brand__logo" src="assets/images/cursed-mcdonalds-logo.png" alt="" />
           </span>
           <span class="brand__name glitch" data-glitch="Cursed McDonalds">Cursed McDonalds</span>
         </div>
@@ -108,6 +108,16 @@
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js")
+            .then(() => console.log("Service Worker registered"))
+            .catch((err) => console.error("Service Worker failed:", err));
+        });
+      }
+    </script>
 
     <script>
       const originalTitle = document.title;

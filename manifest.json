@@ -1,22 +1,25 @@
 {
   "name": "Cursed McDonalds",
   "short_name": "CursedMcD",
-  "description": "A cursed fan-made McDonalds horror website.",
-  "start_url": "./index.html",
+  "description": "Official Cursed McDonalds franchise hub with lore, game, reports, and updates.",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#ff0000",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "assets/images/Cursed McDonalds Logo.png",
+      "src": "assets/images/cursed-mcdonalds-logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "assets/images/Cursed McDonalds Logo.png",
+      "src": "assets/images/cursed-mcdonalds-logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
