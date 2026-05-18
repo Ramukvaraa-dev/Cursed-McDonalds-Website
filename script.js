@@ -368,4 +368,21 @@ if (musicToggle && bgMusic) {
 // ====================
 // INITIALIZATION
 // ====================
+
+// Loading screen
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    loader.classList.add("hidden");
+    setTimeout(() => loader.remove(), 500);
+  }
+});
+
+// Tab title visibility change
+const originalTitle = document.title;
+document.addEventListener("visibilitychange", () => {
+  document.title = document.hidden
+    ? "Don't leave..."
+    : originalTitle;
+});
 setSidebarOpen(desktopQuery.matches);

@@ -9,6 +9,11 @@
       content="Official Cursed McDonalds franchise hub with game, lore, updates, and reporting."
     />
 
+    <meta property="og:title" content="Cursed McDonalds" />
+    <meta property="og:description" content="Official cursed franchise hub with lore, game, and updates." />
+    <meta property="og:image" content="/assets/images/cursed-mcdonalds-logo.png" />
+    <meta property="og:type" content="website" />
+
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ff0000" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/cursed-mcdonalds-logo.png" />
@@ -19,6 +24,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="crt">
+    <div id="loader">
+      <div class="loader-content">
+        <h1>Cursed McDonalds</h1>
+        <p>Initializing restaurant systems...</p>
+      </div>
+    </div>
+
+    <noscript>
+      <p style="padding: 2rem; color: red; font-family: monospace; background: black; min-height: 100vh; display: flex; align-items: center;">This website works best with JavaScript enabled.</p>
+    </noscript>
+
     <div class="fx" aria-hidden="true">
       <div class="fx__scanlines"></div>
       <div class="fx__vignette"></div>
@@ -112,30 +128,14 @@
       </div>
     </footer>
 
-    <script src="auth.js"></script>w
+    <script src="auth.js"></script>
     <script src="script.js"></script>
     <script src="counter.js"></script>
 
     <script>
       if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js")
-            .then(() => console.log("Service Worker registered"))
-            .catch((err) => console.error("Service Worker failed:", err));
-        });
+        navigator.serviceWorker.register("/sw.js");
       }
-    </script>
-
-    <script>
-      const originalTitle = document.title;
-
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          document.title = "Don't leave...";
-        } else {
-          document.title = originalTitle;
-        }
-      });
     </script>
   </body>
 </html>

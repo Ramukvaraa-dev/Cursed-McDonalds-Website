@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Play — Cursed McDonalds</title>
     <meta name="description" content="Play the original Cursed McDonalds game directly in your browser." />
+
+    <meta property="og:title" content="Play | Cursed McDonalds" />
+    <meta property="og:description" content="Play the original Cursed McDonalds game." />
+    <meta property="og:image" content="/assets/images/cursed-mcdonalds-logo.png" />
+    <meta property="og:type" content="website" />
+
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ff0000" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/cursed-mcdonalds-logo.png" />
@@ -14,6 +20,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="crt">
+    <div id="loader">
+      <div class="loader-content">
+        <h1>Cursed McDonalds</h1>
+        <p>Initializing restaurant systems...</p>
+      </div>
+    </div>
+
+    <noscript>
+      <p style="padding: 2rem; color: red; font-family: monospace; background: black; min-height: 100vh; display: flex; align-items: center;">This website works best with JavaScript enabled.</p>
+    </noscript>
+
     <div class="fx" aria-hidden="true">
       <div class="fx__scanlines"></div>
       <div class="fx__vignette"></div>
