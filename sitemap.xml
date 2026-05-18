@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/lore.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/diary-1.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/play.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/information.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/report.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/ai.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ramukvaraa-dev.github.io/Cursed-McDonalds-Website/login.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>
